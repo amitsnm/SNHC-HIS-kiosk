@@ -1,0 +1,70 @@
+:root {
+  --ink: #102a32;
+  --ink-soft: #3d5a63;
+  --paper: #f7f4ef;
+  --paper-2: #eef6f4;
+  --teal-900: #0b3d39;
+  --teal-800: #124a44;
+  --teal-600: #1f6b62;
+  --teal-400: #3a9a8c;
+  --teal-100: #d7efea;
+  --gold: #e8a838;
+  --gold-soft: #f3d08a;
+  --coral: #d96b4c;
+  --mint: #2f9e8a;
+  --sky: #4b8fd4;
+  --violet-soft: #6b7fd7;
+  --shadow: 0 18px 50px rgba(11, 61, 74, 0.14);
+  --shadow-press: 0 8px 22px rgba(11, 61, 74, 0.18);
+  --radius-card: 28px;
+  --radius-pill: 999px;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-ui: "Outfit", sans-serif;
+  color: var(--ink);
+  background: var(--teal-900);
+  font-family: var(--font-ui);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  background: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
