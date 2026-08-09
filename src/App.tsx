@@ -252,6 +252,9 @@ export default function App() {
                     }
                     onClick={() => openService(service)}
                   >
+                    <span className="service-card__num" aria-hidden>
+                      {index + 1}
+                    </span>
                     <span className="service-card__icon">
                       <ServiceIcon name={service.icon} />
                     </span>

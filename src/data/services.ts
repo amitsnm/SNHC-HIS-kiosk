@@ -42,6 +42,7 @@ export const languages: { id: Lang; label: string }[] = [
 ];
 
 export const services: Service[] = [
+
   {
     id: "registration",
     accent: "#1f7a8c",
@@ -52,26 +53,7 @@ export const services: Service[] = [
     hi: { title: "पंजीकरण", subtitle: "नए / पुराने मरीज़ का ओपीडी पंजीकरण" },
     pa: { title: "ਰਜਿਸਟ੍ਰੇਸ਼ਨ", subtitle: "ਨਵੇਂ / ਪੁਰਾਣੇ ਮਰੀਜ਼ ਦਾ ਓਪੀਡੀ ਰਜਿਸਟ੍ਰੇਸ਼ਨ" },
   },
-  {
-    id: "print-report",
-    accent: "#4b8fd4",
-    accentSoft: "#e3effb",
-    needsIdentity: true,
-    icon: "file",
-    en: { title: "Print Report", subtitle: "Lab, radiology & discharge reports" },
-    hi: { title: "रिपोर्ट प्रिंट", subtitle: "लैब, रेडियोलॉजी और डिस्चार्ज रिपोर्ट" },
-    pa: { title: "ਰਿਪੋਰਟ ਪ੍ਰਿੰਟ", subtitle: "ਲੈਬ, ਰੇਡੀਓਲੋਜੀ ਅਤੇ ਡਿਸਚਾਰਜ ਰਿਪੋਰਟਾਂ" },
-  },
-  {
-    id: "bill-payment",
-    accent: "#d96b4c",
-    accentSoft: "#fbe8e2",
-    needsIdentity: true,
-    icon: "wallet",
-    en: { title: "Bill Payment", subtitle: "Pay OPD, IPD or diagnostic bills" },
-    hi: { title: "बिल भुगतान", subtitle: "ओपीडी, आईपीडी या जांच बिल चुकाएँ" },
-    pa: { title: "ਬਿੱਲ ਭੁਗਤਾਨ", subtitle: "ਓਪੀਡੀ, ਆਈਪੀਡੀ ਜਾਂ ਜਾਂਚ ਬਿੱਲ ਭਰੋ" },
-  },
+
   {
     id: "appointment",
     accent: "#2f9e8a",
@@ -82,6 +64,7 @@ export const services: Service[] = [
     hi: { title: "अपॉइंटमेंट", subtitle: "डॉक्टर, तारीख और समय चुनें" },
     pa: { title: "ਅਪਾਇੰਟਮੈਂਟ", subtitle: "ਡਾਕਟਰ, ਤਾਰੀਖ ਅਤੇ ਸਮਾਂ ਚੁਣੋ" },
   },
+
   {
     id: "opd-token",
     accent: "#e8a838",
@@ -92,6 +75,7 @@ export const services: Service[] = [
     hi: { title: "ओपीडी टोकन", subtitle: "आज की कतार के लिए टोकन लें" },
     pa: { title: "ਓਪੀਡੀ ਟੋਕਨ", subtitle: "ਅੱਜ ਦੀ ਕਤਾਰ ਲਈ ਟੋਕਨ ਲਓ" },
   },
+
   {
     id: "find-doctor",
     accent: "#6b7fd7",
@@ -102,6 +86,29 @@ export const services: Service[] = [
     hi: { title: "डॉक्टर खोजें", subtitle: "विशेषज्ञता और डॉक्टर देखें" },
     pa: { title: "ਡਾਕਟਰ ਲੱਭੋ", subtitle: "ਵਿਸ਼ੇਸ਼ਤਾ ਅਤੇ ਡਾਕਟਰ ਵੇਖੋ" },
   },
+
+  {
+    id: "print-report",
+    accent: "#4b8fd4",
+    accentSoft: "#e3effb",
+    needsIdentity: true,
+    icon: "file",
+    en: { title: "Print Report", subtitle: "Lab, radiology & discharge reports" },
+    hi: { title: "रिपोर्ट प्रिंट", subtitle: "लैब, रेडियोलॉजी और डिस्चार्ज रिपोर्ट" },
+    pa: { title: "ਰਿਪੋਰਟ ਪ੍ਰਿੰਟ", subtitle: "ਲੈਬ, ਰੇਡੀਓਲੋਜੀ ਅਤੇ ਡਿਸਚਾਰਜ ਰਿਪੋਰਟਾਂ" },
+  },
+
+  {
+    id: "bill-payment",
+    accent: "#d96b4c",
+    accentSoft: "#fbe8e2",
+    needsIdentity: true,
+    icon: "wallet",
+    en: { title: "Bill Payment", subtitle: "Pay OPD, IPD or diagnostic bills" },
+    hi: { title: "बिल भुगतान", subtitle: "ओपीडी, आईपीडी या जांच बिल चुकाएँ" },
+    pa: { title: "ਬਿੱਲ ਭੁਗਤਾਨ", subtitle: "ਓਪੀਡੀ, ਆਈਪੀਡੀ ਜਾਂ ਜਾਂਚ ਬਿੱਲ ਭਰੋ" },
+  },
+
   {
     id: "pharmacy",
     accent: "#2f8f6b",
@@ -112,6 +119,7 @@ export const services: Service[] = [
     hi: { title: "फार्मेसी", subtitle: "दवा पर्ची और कलेक्ट स्थिति देखें" },
     pa: { title: "ਫਾਰਮੇਸੀ", subtitle: "ਦਵਾਈ ਪਰਚੀ ਅਤੇ ਕੁਲੈਕਟ ਸਥਿਤੀ ਵੇਖੋ" },
   },
+
   {
     id: "health-packages",
     accent: "#c45c8a",
@@ -122,6 +130,7 @@ export const services: Service[] = [
     hi: { title: "स्वास्थ्य पैकेज", subtitle: "प्रिवेंटिव चेकअप और वेलनेस पैकेज" },
     pa: { title: "ਸਿਹਤ ਪੈਕੇਜ", subtitle: "ਪ੍ਰੀਵੈਂਟਿਵ ਚੈੱਕਅੱਪ ਅਤੇ ਵੈਲਨੈੱਸ ਪੈਕੇਜ" },
   },
+
   {
     id: "help",
     accent: "#135466",
@@ -131,7 +140,8 @@ export const services: Service[] = [
     en: { title: "Help Desk", subtitle: "Directions, emergency & assistance" },
     hi: { title: "सहायता डेस्क", subtitle: "दिशा, आपातकाल और सहायता" },
     pa: { title: "ਮਦਦ ਡੈਸਕ", subtitle: "ਦਿਸ਼ਾ, ਐਮਰਜੈਂਸੀ ਅਤੇ ਸਹਾਇਤਾ" },
-  },
+  }
+
 ];
 
 export const copy = {
