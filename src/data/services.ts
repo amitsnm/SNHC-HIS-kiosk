@@ -30,6 +30,7 @@ export type Service = {
   accentSoft: string;
   needsIdentity: boolean;
   icon: ServiceIconName;
+  externalUrl?: string;
   en: ServiceCopy;
   hi: ServiceCopy;
   pa: ServiceCopy;

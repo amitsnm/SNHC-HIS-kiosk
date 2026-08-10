@@ -182,6 +182,10 @@ export default function App() {
   );
 
   function openService(service: Service) {
+    if (service.externalUrl) {
+      window.location.assign(service.externalUrl);
+      return;
+    }
     setActiveService(service);
     setScreen(service.needsIdentity ? "identify" : "ready");
   }
