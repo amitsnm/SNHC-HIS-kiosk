@@ -10,7 +10,7 @@ import {
 } from "./data/services";
 import "./App.css";
 
-type Screen = "home" | "identify" | "ready";
+type Screen = "home" | "identify" | "ready" | "embed";
 
 function useClock() {
   const [now, setNow] = useState(() => new Date());
@@ -154,6 +154,53 @@ function ReadyScreen({
   );
 }
 
+function EmbedScreen({
+  service,
+  lang,
+  onBack,
+}: {
+  service: Service;
+  lang: Lang;
+  onBack: () => void;
+}) {
+  const t = copy[lang];
+  const label = service[lang];
+  const [loading, setLoading] = useState(true);
+  const url = service.externalUrl ?? "";
+
+  useEffect(() => {
+    setLoading(true);
+  }, [url]);
+
+  return (
+    <section className="embed-shell" aria-label={label.title}>
+      <div className="embed-bar">
+        <button type="button" className="primary-btn embed-bar__back" onClick={onBack}>
+          ← {t.back}
+        </button>
+        <div className="embed-bar__meta">
+          <span className="embed-bar__eyebrow">{t.brand}</span>
+          <h2 className="embed-bar__title">{label.title}</h2>
+        </div>
+        <p className="embed-bar__hint">{t.embedHint}</p>
+      </div>
+
+      <div className="embed-frame-wrap">
+        {loading && <div className="embed-loading">{t.embedLoading}</div>}
+        <iframe
+          key={url}
+          className="embed-frame"
+          src={url}
+          title={label.title}
+          allow="payment; fullscreen; clipboard-read; clipboard-write"
+          referrerPolicy="no-referrer-when-downgrade"
+          onLoad={() => setLoading(false)}
+        />
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   const [lang, setLang] = useState<Lang>("en");
   const [screen, setScreen] = useState<Screen>("home");
@@ -182,11 +229,11 @@ export default function App() {
   );
 
   function openService(service: Service) {
+    setActiveService(service);
     if (service.externalUrl) {
-      window.location.assign(service.externalUrl);
+      setScreen("embed");
       return;
     }
-    setActiveService(service);
     setScreen(service.needsIdentity ? "identify" : "ready");
   }
 
@@ -195,40 +242,44 @@ export default function App() {
     setActiveService(null);
   }
 
+  const isEmbed = screen === "embed" && activeService?.externalUrl;
+
   return (
-    <div className="kiosk">
-      <header className="topbar">
-        <div className="brand">
-          <BrandMark lang={lang} />
-        </div>
-
-        <div className="topbar__actions">
-          <div className="clock" aria-live="polite">
-            <span className="clock__time">{timeLabel}</span>
-            <span className="clock__date">
-              {t.clockLabel} · {dateLabel}
-            </span>
+    <div className={`kiosk${isEmbed ? " kiosk--embed" : ""}`}>
+      {!isEmbed && (
+        <header className="topbar">
+          <div className="brand">
+            <BrandMark lang={lang} />
           </div>
-          <div className="lang-switch" role="group" aria-label="Language">
-            {languages.map((option) => (
-              <button
-                key={option.id}
-                type="button"
-                className={`lang-btn${lang === option.id ? " is-active" : ""}`}
-                onClick={() => setLang(option.id)}
-                aria-pressed={lang === option.id}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-          <a className="emergency-btn" href="tel:102">
-            {t.emergency}
-          </a>
-        </div>
-      </header>
 
-      <main className="stage">
+          <div className="topbar__actions">
+            <div className="clock" aria-live="polite">
+              <span className="clock__time">{timeLabel}</span>
+              <span className="clock__date">
+                {t.clockLabel} · {dateLabel}
+              </span>
+            </div>
+            <div className="lang-switch" role="group" aria-label="Language">
+              {languages.map((option) => (
+                <button
+                  key={option.id}
+                  type="button"
+                  className={`lang-btn${lang === option.id ? " is-active" : ""}`}
+                  onClick={() => setLang(option.id)}
+                  aria-pressed={lang === option.id}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+            <a className="emergency-btn" href="tel:102">
+              {t.emergency}
+            </a>
+          </div>
+        </header>
+      )}
+
+      <main className={`stage${isEmbed ? " stage--embed" : ""}`}>
         {screen === "home" && (
           <section className="home" aria-labelledby="welcome-title">
             <div className="welcome">
@@ -288,13 +339,19 @@ export default function App() {
         {screen === "ready" && activeService && (
           <ReadyScreen service={activeService} lang={lang} onBack={goHome} />
         )}
+
+        {screen === "embed" && activeService?.externalUrl && (
+          <EmbedScreen service={activeService} lang={lang} onBack={goHome} />
+        )}
       </main>
 
-      <footer className="footer">
-        <span>{t.address}</span>
-        <span className="footer__website">{t.website}</span>
-        <span>{t.assistance}</span>
-      </footer>
+      {!isEmbed && (
+        <footer className="footer">
+          <span>{t.address}</span>
+          <span className="footer__website">{t.website}</span>
+          <span>{t.assistance}</span>
+        </footer>
+      )}
     </div>
   );
 }

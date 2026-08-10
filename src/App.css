@@ -182,6 +182,102 @@
   backdrop-filter: none;
 }
 
+.kiosk--embed {
+  grid-template-rows: minmax(0, 1fr);
+  padding: 0;
+}
+
+.stage--embed {
+  padding: 0;
+  height: 100%;
+  min-height: 100%;
+}
+
+.embed-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+  min-height: 0;
+  background: #eef5f3;
+}
+
+.embed-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background:
+    linear-gradient(
+      165deg,
+      rgba(255, 255, 255, 0.78) 0%,
+      rgba(255, 255, 255, 0.42) 100%
+    );
+  border-bottom: 1px solid rgba(11, 61, 57, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.embed-bar__back {
+  min-width: 168px;
+}
+
+.embed-bar__meta {
+  min-width: 0;
+}
+
+.embed-bar__eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal-600);
+}
+
+.embed-bar__title {
+  margin: 2px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  color: var(--teal-900);
+  line-height: 1.15;
+}
+
+.embed-bar__hint {
+  margin: 0;
+  max-width: 28ch;
+  text-align: right;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.embed-frame-wrap {
+  position: relative;
+  min-height: 0;
+  background: #fff;
+}
+
+.embed-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+.embed-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  background: rgba(243, 250, 248, 0.92);
+  color: var(--teal-900);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 .home {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
@@ -683,10 +779,26 @@
 }
 
 /* Mobile / narrow kiosk */
+@media (max-width: 900px) {
+  .embed-bar {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .embed-bar__hint {
+    text-align: left;
+    max-width: none;
+  }
+}
+
 @media (max-width: 700px) {
   .kiosk {
     padding: 12px;
     overflow: visible;
+  }
+
+  .kiosk--embed {
+    padding: 0;
   }
 
   .stage,
