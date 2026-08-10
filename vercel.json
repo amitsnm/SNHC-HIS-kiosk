@@ -1,20 +1,24 @@
 {
   "rewrites": [
     {
-      "source": "/karexpert/:path*",
-      "destination": "https://nirankarihealthcity.karexpert.com/:path*"
-    }
-  ],
-  "headers": [
+      "source": "/karexpert",
+      "destination": "/api/karexpert?path="
+    },
     {
-      "source": "/karexpert/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        {
-          "key": "Content-Security-Policy",
-          "value": "frame-ancestors 'self'"
-        }
-      ]
+      "source": "/karexpert/",
+      "destination": "/api/karexpert?path="
+    },
+    {
+      "source": "/karexpert/:path*",
+      "destination": "/api/karexpert?path=:path*"
+    },
+    {
+      "source": "/account-management/:path*",
+      "destination": "/api/karexpert?path=account-management/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "/api/karexpert?path=assets/:path*"
     }
   ]
 }
