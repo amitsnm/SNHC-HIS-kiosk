@@ -61,7 +61,7 @@ export const services: Service[] = [
     accentSoft: "#dff5f0",
     needsIdentity: false,
     icon: "calendar",
-    externalUrl: "https://nirankarihealthcity.karexpert.com/account-management/login",
+    externalUrl: "/karexpert/account-management/login",
     en: { title: "Book Appointment", subtitle: "Choose doctor, date and time slot" },
     hi: { title: "अपॉइंटमेंट", subtitle: "डॉक्टर, तारीख और समय चुनें" },
     pa: { title: "ਅਪਾਇੰਟਮੈਂਟ", subtitle: "ਡਾਕਟਰ, ਤਾਰੀਖ ਅਤੇ ਸਮਾਂ ਚੁਣੋ" },
